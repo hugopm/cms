@@ -187,7 +187,7 @@ def is_last_minutes(timestamp: datetime, participation: Participation, delta=tim
     return (bool): whether it is the last `delta` of the participation.
     """
 
-    if participation.contest.per_user_time is None:
+    if participation.starting_time is None or participation.contest.per_user_time is None:
         end_time = participation.contest.stop
     else:
         end_time = participation.starting_time + participation.contest.per_user_time
