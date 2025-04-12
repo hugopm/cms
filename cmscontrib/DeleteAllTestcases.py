@@ -66,8 +66,13 @@ def main():
                         help="task whose testcases will be deleted")
     args = parser.parse_args()
 
-    success = delete_all_testcases(args.task_name) 
-    return 0 if success is True else 1
+    ans = input("Are you sure you want to delete ALL testcases? [y/N] ").strip().lower()
+
+    if ans in ["y", "yes"]:
+        success = delete_all_testcases(args.task_name)
+        return 0 if success is True else 1
+    else:
+        print("Aborted")
 
 
 if __name__ == "__main__":
